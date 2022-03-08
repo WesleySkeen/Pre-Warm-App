@@ -1,4 +1,4 @@
-namespace WarmUpApp;
+namespace WeatherForecast.Api;
 
 public class WeatherForecast
 {

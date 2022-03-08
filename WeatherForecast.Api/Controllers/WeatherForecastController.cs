@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace WarmUpApp.Controllers;
+namespace WeatherForecast.Api.Controllers;
 
 [ApiController]
 [Route("[controller]")]
