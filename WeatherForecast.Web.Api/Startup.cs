@@ -1,16 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using WeatherForecast.Web.Api.HostedServices;
 
 namespace WeatherForecast.Web.Api
 {
@@ -31,6 +25,7 @@ namespace WeatherForecast.Web.Api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WeatherForecast.Web.Api", Version = "v1" });
             });
+            services.AddHostedService<CheckWarmUpHostedService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
