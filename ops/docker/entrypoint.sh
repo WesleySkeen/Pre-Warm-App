@@ -1,3 +1,3 @@
-ls
+#!/bin/sh
 
-sleep 5m
+dotnet ./warmup/WeatherForecast.WarmUp.dll
