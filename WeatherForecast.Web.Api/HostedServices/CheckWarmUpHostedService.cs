@@ -28,7 +28,7 @@ namespace WeatherForecast.Web.Api.HostedServices
 
         private void DoWork(object state)
         {
-            _logger.LogInformation("Ticking");
+            _logger.LogInformation("Is app warm? {@IsWarmedUp}", WarmUpStatus.IsWarmedUp);
         }
 
         public Task StopAsync(CancellationToken stoppingToken)
