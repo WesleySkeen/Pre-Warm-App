@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
@@ -28,7 +29,14 @@ namespace WeatherForecast.Web.Api.HostedServices
 
         private void DoWork(object state)
         {
-            _logger.LogInformation("Is app warm? {@IsWarmedUp}", WarmUpStatus.IsWarmedUp);
+            if (WarmUpStatus.IsWarmedUp) return;
+
+            if (File.Exists(WarmUpStatus.WarmUpSuccessFileName))
+            {
+                WarmUpStatus.SetIsWarmedUpStatus(isWarmedUp: true);
+                
+                _logger.LogInformation("App is warm");
+            }
         }
 
         public Task StopAsync(CancellationToken stoppingToken)

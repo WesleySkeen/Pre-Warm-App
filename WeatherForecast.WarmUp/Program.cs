@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Polly;
@@ -11,11 +12,13 @@ namespace WeatherForecast.WarmUp
 
         static void Main(string[] args)
         {
-            var appIsUp = CheckIfAppIsUp(5, 5).GetAwaiter().GetResult();
+            var appIsUp = CheckIfAppIsUp(maxAttempts:5, secondsToWaitBetweenRetries:5).GetAwaiter().GetResult();
 
             if (appIsUp)
             {
                 WarmUpApp(5).GetAwaiter().GetResult();
+
+                File.Create("warmup.success");
                 
                 Console.WriteLine("The app is warm");
             }

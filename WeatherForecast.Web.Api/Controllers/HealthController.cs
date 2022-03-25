@@ -21,9 +21,7 @@ namespace WeatherForecast.Web.Api.Controllers
         [HttpGet]
         public bool Get()
         {
-            _logger.LogInformation("Checking Health");
-
-            return true;
+            return WarmUpStatus.IsWarmedUp;
         }
     }
 }
