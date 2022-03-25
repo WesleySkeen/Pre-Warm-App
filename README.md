@@ -10,12 +10,11 @@ A console app that does the following
 ## WeatherForecast.Web.Api
 The Web API checks contains a hosted task that checks if the file was created by the warm up console app. If the file exists then an internal warm up status (`WarmUpStatus.IsWarmedUp`) is set to true. the health endpoint checks this status which signifies if the app is healthy and warmed up.
 
+## entrypoint.sh
+This file first runs the WarmUp app in a background thread and then starts the Web API. 
+
 ## Build and run docker container
 ```
 docker build -f ops/docker/Dockerfile . -t docker_app_tag
 docker run -d -p 8080:80 --name docker_app_name docker_app_tag
 ```
-
-## entrypoint.sh
-
-This file first runs the WarmUp app in a background thread and then starts the Web API. 
